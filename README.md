@@ -43,4 +43,17 @@ f.input <- function(x1,x2,x3,x4,x5){f}
 library(cubature)
 adaptIntegrate(f.input,lowerLimit = c(0,0,0,0,0), upperLimit = c(1,1,1,1,1))
 
+# inverse
+library(rSymPy)
+a1 <- Var("a1")
+a2 <- Var("a2")
+a3 <- Var("a3")
+a4 <- Var("a4")
+A <- Matrix(List(a1, a2), List(a3, a4))
+A <- Matrix(List(a1, a2, a3,0,0), List(a3, a4, a4, a1, a2), List(a1, a3, a5, a2, 0), List(a3, a1, a4, a1, a3), List(a3, a1, a4, a1, a4))
+#define inverse and determinant
+Inv <- function(x) Sym("(", x, ").inv()")
+A
+Inv(A)
+
 ```
