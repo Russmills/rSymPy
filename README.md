@@ -37,4 +37,10 @@ f5 <- a5
 
 f <- T*A*V*f1*f2*f3*f4*f5
 
+#write f as a function format
+f.input <- function(x1,x2,x3,x4,x5){f}
+
+library(cubature)
+adaptIntegrate(f,lowerLimit = c(0,0,0,0,0), upperLimit = c(1,1,1,1,1))
+
 ```
