@@ -15,8 +15,8 @@ library(rSymPy)
 
 
 ```{r, echo=FALSE}
-library(rSymPy)
-a1 <- Var("a1")
+
+a1 <- Var("x1*x2")#change variables here instead of multiply them in the matrix below.
 a2 <- Var("a2")
 a3 <- Var("a3")
 a4 <- Var("a4")
