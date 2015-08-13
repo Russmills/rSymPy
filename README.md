@@ -16,6 +16,10 @@ library(rSymPy)
 
 ```{r, echo=FALSE}
 
+x1 <- Var("x1")
+x2 <- Var("x2")
+
+
 a1 <- Var("x1*x2")#change variables here instead of multiplying them in the matrix below.
 a2 <- Var("a2")
 a3 <- Var("a3")
