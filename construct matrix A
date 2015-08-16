@@ -1,0 +1,64 @@
+---
+title: "Constructing Matrix A"
+author: "Jiyi Jiang"
+date: "2015年8月16日"
+output: html_document
+---
+
+```{r}
+F <- 2
+K <- 2
+L <- 2
+N <- F*K*L
+library(rSymPy)
+x1 <- Var("x1")
+x2 <- Var("x2")
+x3 <- Var("x3")
+x4 <- Var("x4")
+x5 <- Var("x5")
+
+w <- Var("w")
+
+#define M
+IN <- matrix(1, nrow = N, ncol = 1)
+W <- matrix(w, nrow = N, ncol = 1)
+
+m <- cbind(-x2 %*% IN, W-(x1 %*% IN))
+M <- t(M)
+
+#define V
+IK <- matrix(1, nrow = K, ncol = 1)
+IL <- matrix(1, nrow = L, ncol = 1)
+DF <- diag(1, nrow = F, ncol = F)
+
+z1 <- kronecker(DF,IL)
+Z1 <- kronecker(IK,z1)
+
+IFL <- matrix(1, nrow = F*L, ncol = 1)
+DK <- diag(1, nrow = K, ncol = K)
+
+Z2 <- kronecker(DK,IFL)
+
+DFKL <- diag(1, nrow = N, ncol = N)
+
+Z3 <- DFKL
+
+v <- x3* Z1 %*% t(Z1) + x4* Z2 %*% t(Z2) + x5* Z3 %*% t(Z3)
+
+V <- Inv(v)
+
+#define N
+N <- rbind(-x2*IN, W-x1*IN)
+
+#define A
+
+A <- M %*% V %*% N
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
