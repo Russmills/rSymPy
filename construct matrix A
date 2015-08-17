@@ -1,11 +1,3 @@
----
-title: "Constructing Matrix A"
-author: "Jiyi Jiang"
-date: "2015年8月16日"
-output: html_document
----
-
-```{r}
 F <- 2
 K <- 2
 L <- 2
@@ -43,12 +35,17 @@ DFKL <- diag(1, nrow = N, ncol = N)
 
 Z3 <- DFKL
 
-Z1.imput <- Z1 %*% t(Z1)
-                  
-Z2.imput <- Z2 %*% t(Z2)
-Z3.imput <- Z3 %*% t(Z3)
+z1 <- cbind(x3*Z1 %*% t(Z1))
+z2 <- cbind(x4*Z2 %*% t(Z2))
+z3 <- cbind(x5*Z3 %*% t(Z3))
 
-v <- x3 * Z1.imput + x4 * Z2.imput  + x5* Z3.imput
+Y1 <- matrix(z1, nrow = 8, ncol = 8)
+Y2 <- matrix(z2, nrow = 8, ncol = 8)
+Y3 <- matrix(z3, nrow = 8, ncol = 8)
+
+Y1M <- M
+
+v <- x3 * Z1.input + x4 * Z2.input  + x5* Z3.input
 
 Inv <- function(x) Sym("(", x, ").inv()") #define inverse function
 V <- Inv(v)
@@ -59,12 +56,3 @@ N <- rbind(-x2*IN, W-x1*IN)
 #define A
 
 A <- M %*% V %*% N
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
