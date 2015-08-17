@@ -17,14 +17,14 @@ x3 <- Var("x3")
 x4 <- Var("x4")
 x5 <- Var("x5")
 
-w <- Var("w")
+##w <- Var("w")
 
 #define M
 IN <- matrix(1, nrow = N, ncol = 1)
-W <- matrix(w, nrow = N, ncol = 1)
+W <- matrix(3, nrow = N, ncol = 1)
 
-m <- cbind(-x2 %*% IN, W-(x1 %*% IN))
-M <- t(M)
+m <- cbind(-x2 * IN, W-(x1 * IN))
+M <- t(m)
 
 #define V
 IK <- matrix(1, nrow = K, ncol = 1)
@@ -43,8 +43,14 @@ DFKL <- diag(1, nrow = N, ncol = N)
 
 Z3 <- DFKL
 
-v <- x3* Z1 %*% t(Z1) + x4* Z2 %*% t(Z2) + x5* Z3 %*% t(Z3)
+Z1.imput <- Z1 %*% t(Z1)
+                  
+Z2.imput <- Z2 %*% t(Z2)
+Z3.imput <- Z3 %*% t(Z3)
 
+v <- x3 * Z1.imput + x4 * Z2.imput  + x5* Z3.imput
+
+Inv <- function(x) Sym("(", x, ").inv()") #define inverse function
 V <- Inv(v)
 
 #define N
