@@ -1,3 +1,5 @@
+
+```{r}
 F <- 2
 K <- 2
 L <- 2
@@ -39,9 +41,13 @@ z1 <- cbind(x3*Z1 %*% t(Z1))
 z2 <- cbind(x4*Z2 %*% t(Z2))
 z3 <- cbind(x5*Z3 %*% t(Z3))
 
-Y1 <- matrix(z1, nrow = 8, ncol = 8)
-Y2 <- matrix(z2, nrow = 8, ncol = 8)
-Y3 <- matrix(z3, nrow = 8, ncol = 8)
+y1 <- matrix(z1, nrow = 8, ncol = 8)
+y2 <- matrix(z2, nrow = 8, ncol = 8)
+y3 <- matrix(z3, nrow = 8, ncol = 8)
+
+Y1 <- Matrix((Listy1[1,1]),(y1[2,]),(y1[3,]),(y1[4,]),(y1[5,]),(y1[6,]),(y1[7,]),(y1[8,]))
+Y2 <- Matrix((y2[1,]),(y2[2,]),(y2[3,]),(y2[4,]),(y2[5,]),(y2[6,]),(y2[7,]),(y2[8,]))
+
 
 Y1M <- M
 
@@ -56,3 +62,5 @@ N <- rbind(-x2*IN, W-x1*IN)
 #define A
 
 A <- M %*% V %*% N
+
+```
