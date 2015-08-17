@@ -18,7 +18,9 @@ IN <- matrix(1, nrow = N, ncol = 1)
 W <- matrix(3, nrow = N, ncol = 1)
 
 m <- cbind(-x2 * IN, W-(x1 * IN))
-M <- t(m)
+m1 <- t(m)
+M <-  Matrix(List(m1[1,1],m1[1,2],m1[1,3],m1[1,4],m1[1,5],m1[1,6],m1[1,7],m1[1,8]),
+             List(m1[2,1],m1[2,2],m1[2,3],m1[2,4],m1[2,5],m1[2,6],m1[2,7],m1[2,8]))
 
 #define V
 IK <- matrix(1, nrow = K, ncol = 1)
@@ -89,10 +91,10 @@ Inv <- function(x) Sym("(", x, ").inv()") #define inverse function
 V <- Inv(v)
 
 #define N
-N <- rbind(-x2*IN, W-x1*IN)
+N <- cbind(-x2*IN, W-x1*IN)
 
 #define A
 
-A <- M %*% V %*% N
+A <- M * V * N
 
 ```
